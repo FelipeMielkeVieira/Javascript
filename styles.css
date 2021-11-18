@@ -7,7 +7,7 @@
     border: 1px solid black;
     border-radius: 6px;
     background-color: red;
-    color: blue;
+    color: white;
     padding: 10px;
     width: 100px;
     position: absolute;
@@ -110,4 +110,40 @@
 .info {
     margin-top: 20px;
     font-size: 15px;
+}
+
+.mensagem {
+    padding: 2px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 200px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    border: 3px solid black;
+    border-radius: 6px;
+}
+
+.tabela {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.linha {
+    width: 100%;
+    height: 34px;
+    display: flex;
+    flex-direction: row;
+}
+
+.dado {
+    width: 32%;
+    border: 1px solid black;
 }
