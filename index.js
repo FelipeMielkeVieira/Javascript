@@ -58,6 +58,8 @@ function alert(a) {
         nome.value = '';
         sobrenome.value = '';
         data.value = '';
+        tela.style.opacity = '1';
+        tabela();
 
     }
 
@@ -65,23 +67,71 @@ function alert(a) {
 
 }
 
-let tabela = document.createElement("div");
-tabela.className = 'tabela';
+let tabeladiv = document.createElement("div");
+tabeladiv.className = 'tabela';
 
-let linha = document.createElement("div");
-linha.className = 'linha';
+let contagem = 0;
 
-let dado = document.createElement("div");
-dado.className = 'dado';
+function tabela(){
 
-// function tabela(){
+    if(contagem == 0) {
+        linhainicial();
+    }
 
-//     telatotal.appendChild(tabela);
-//     tabela.appendChild(linha);
-
-//     linha.appendChild(dado);
+    let linha = document.createElement("div");
+    linha.className = 'linha';
     
-// }
+    let dado1 = document.createElement("div");
+    dado1.className = 'dado';
+    
+    let dado2 = document.createElement("div");
+    dado2.className = 'dado';
+    
+    let dado3 = document.createElement("div");
+    dado3.className = 'dado';
+
+    tabeladiv.appendChild(linha);
+
+    let objeto = lista[contagem];
+
+    dado1.innerText = objeto.a;
+    linha.appendChild(dado1);
+    
+    dado2.innerText = objeto.b;
+    linha.appendChild(dado2);
+
+    dado3.innerText = objeto.c;
+    linha.appendChild(dado3);
+
+    contagem++;
+}
+
+function linhainicial() {
+
+    let linha = document.createElement("div");
+    linha.className = 'linha';
+    
+    let dado1 = document.createElement("div");
+    dado1.className = 'dado';
+    dado1.innerText = 'Nome:'
+    
+    let dado2 = document.createElement("div");
+    dado2.className = 'dado';
+    dado2.innerText = 'Sobrenome:'
+    
+    let dado3 = document.createElement("div");
+    dado3.className = 'dado';
+    dado3.innerText = 'Data de Nascimento:'
+
+    linha.appendChild(dado1);
+    linha.appendChild(dado2);
+    linha.appendChild(dado3);
+
+    tabeladiv.appendChild(linha);
+
+}
+
+telatotal.appendChild(tabeladiv);
 
 function tirarmensagem() {
     telatotal.removeChild(mensagem);

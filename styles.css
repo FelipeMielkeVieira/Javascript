@@ -11,6 +11,8 @@
     padding: 10px;
     width: 100px;
     position: absolute;
+    top: 30px;
+    right: 50px;
 }
 
 .botao:hover {
@@ -32,6 +34,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .caixa {
@@ -138,12 +141,20 @@
 
 .linha {
     width: 100%;
-    height: 34px;
+    height: 30px;
     display: flex;
+    align-items: center;
     flex-direction: row;
+    min-width: 40vw;
+    margin-top: 10px;
 }
 
 .dado {
-    width: 32%;
+    width: 30%;
     border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
