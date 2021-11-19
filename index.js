@@ -17,6 +17,9 @@ let data = document.createElement('input');
 data.type = 'date'
 data.placeholder = 'Data de Nascimento';
 data.className = 'nome';
+data.pattern = "[0-9]{4}-[0-9]{2}-[0-9]{2}";
+
+let dataf;
 
 let botao1 = document.createElement('button');
 botao1.className = 'bt1';
@@ -80,6 +83,9 @@ function tabela(){
 
     let linha = document.createElement("div");
     linha.className = 'linha';
+
+    let contagemtexto = document.createElement("div");
+    contagemtexto.className = 'contagem';
     
     let dado1 = document.createElement("div");
     dado1.className = 'dado';
@@ -94,13 +100,28 @@ function tabela(){
 
     let objeto = lista[contagem];
 
+    contagemtexto.innerText = (contagem + 1);
+    linha.appendChild(contagemtexto);
+
     dado1.innerText = objeto.a;
     linha.appendChild(dado1);
     
     dado2.innerText = objeto.b;
     linha.appendChild(dado2);
 
-    dado3.innerText = objeto.c;
+    let data1 = objeto.c;
+    let data2 = data1.split("-");
+
+    console.log(data2);
+
+    let dia = data2[2];
+    let mes = data2[1];
+    let ano = data2[0];
+
+    dataf = dia + "/" + mes + "/" + ano;
+    console.log(dataf);
+
+    dado3.innerText = dataf;
     linha.appendChild(dado3);
 
     contagem++;
@@ -110,6 +131,9 @@ function linhainicial() {
 
     let linha = document.createElement("div");
     linha.className = 'linha';
+
+    let contagemtexto = document.createElement("div");
+    contagemtexto.className = 'contagem';
     
     let dado1 = document.createElement("div");
     dado1.className = 'dado';
@@ -122,6 +146,9 @@ function linhainicial() {
     let dado3 = document.createElement("div");
     dado3.className = 'dado';
     dado3.innerText = 'Data de Nascimento:'
+
+    contagemtexto.innerText = '-'
+    linha.appendChild(contagemtexto);
 
     linha.appendChild(dado1);
     linha.appendChild(dado2);
