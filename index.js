@@ -70,30 +70,33 @@ function alert(a) {
 
 }
 
-let tabeladiv = document.createElement("div");
+let tabeladiv = document.createElement("table");
 tabeladiv.className = 'tabela';
 
 let contagem = 0;
+let contagem2 = 0;
+let cont;
+let linha;
 
 function tabela(){
 
-    if(contagem == 0) {
+    if(contagem2 == 0) {
         linhainicial();
     }
 
-    let linha = document.createElement("div");
+    linha = document.createElement("tr");
     linha.className = 'linha';
 
-    let contagemtexto = document.createElement("div");
+    let contagemtexto = document.createElement("td");
     contagemtexto.className = 'contagem';
     
-    let dado1 = document.createElement("div");
+    let dado1 = document.createElement("td");
     dado1.className = 'dado';
     
-    let dado2 = document.createElement("div");
+    let dado2 = document.createElement("td");
     dado2.className = 'dado';
     
-    let dado3 = document.createElement("div");
+    let dado3 = document.createElement("td");
     dado3.className = 'dado';
 
     tabeladiv.appendChild(linha);
@@ -112,38 +115,38 @@ function tabela(){
     let data1 = objeto.c;
     let data2 = data1.split("-");
 
-    console.log(data2);
-
     let dia = data2[2];
     let mes = data2[1];
     let ano = data2[0];
 
     dataf = dia + "/" + mes + "/" + ano;
-    console.log(dataf);
 
     dado3.innerText = dataf;
     linha.appendChild(dado3);
 
+    telatotal.appendChild(tabeladiv);
+
     contagem++;
+    contagem2++;
 }
 
 function linhainicial() {
 
-    let linha = document.createElement("div");
+    linha = document.createElement("tr");
     linha.className = 'linha';
 
-    let contagemtexto = document.createElement("div");
+    let contagemtexto = document.createElement("th");
     contagemtexto.className = 'contagem';
     
-    let dado1 = document.createElement("div");
+    let dado1 = document.createElement("th");
     dado1.className = 'dado';
     dado1.innerText = 'Nome:'
     
-    let dado2 = document.createElement("div");
+    let dado2 = document.createElement("th");
     dado2.className = 'dado';
     dado2.innerText = 'Sobrenome:'
     
-    let dado3 = document.createElement("div");
+    let dado3 = document.createElement("th");
     dado3.className = 'dado';
     dado3.innerText = 'Data de Nascimento:'
 
@@ -158,8 +161,6 @@ function linhainicial() {
 
 }
 
-telatotal.appendChild(tabeladiv);
-
 function tirarmensagem() {
     telatotal.removeChild(mensagem);
 }
@@ -172,7 +173,15 @@ function voltar() {
     data.value = '';
 }
 
+let tabelaatual;
+
 function modal() {
+
+    tabelaatual = document.querySelector("table");
+    if(tabelaatual) {
+        telatotal.removeChild(tabeladiv);
+    }
+
     caixa = document.createElement("div");
     caixa.className = 'caixa'
     telatotal.appendChild(caixa);
@@ -196,6 +205,7 @@ function modal() {
     inferior.appendChild(botao1);
     inferior.appendChild(botao2);
     tela.style.opacity = '0.2';
+    cont = 1;
 }
 
 function cadastrar() {
@@ -213,9 +223,6 @@ function cadastrar() {
         }
     
         lista.push(variavel);
-    
-        console.log(variavel);
-        console.log(lista);
 
         alert(2);
 
@@ -225,4 +232,5 @@ function cadastrar() {
 
     }
 
+    console.log(lista);
 }
