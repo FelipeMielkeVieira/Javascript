@@ -76,12 +76,15 @@ function montarLinha(tabela) {
     lista.forEach(function (e) {
         let linhaDado = document.createElement('tr');
 
+        let colunanum = document.createElement('td');
+        colunanum.className = 'contagem';
         let colunaNome = document.createElement('td');
         let colunaSobrenome = document.createElement('td');
         let colunaData = document.createElement('td');
 
         tabela.appendChild(linhaDado);
 
+        colunanum.innerText = contagem;
         colunaNome.innerText = e.a;
         colunaSobrenome.innerText = e.b
 
@@ -95,38 +98,51 @@ function montarLinha(tabela) {
 
         colunaData.innerText = dataf;
 
+        linhaDado.appendChild(colunanum);
         linhaDado.appendChild(colunaNome);
         linhaDado.appendChild(colunaSobrenome);
         linhaDado.appendChild(colunaData);
+
+        contagem++;
     });
 
     document.querySelector('table').style.textAlign = 'center';
 }
+
+let contagem = 0;
 
 function montarTabela() {
     let tabelaAtual = document.querySelector('table');
 
     if (tabelaAtual) {
         tabelaAtual.remove();
+        contagem = 0;
     }
 
     let tabela = document.createElement('table');
 
     linha = document.createElement('tr');
+    let colunanum = document.createElement('th');
+    colunanum.className = 'contagem';
     let colunaNomeHeader = document.createElement('th')
     let colunaSobrenomeHeader = document.createElement('th')
     let colunaDataHeader = document.createElement('th')
+
+    colunanum.innerText = '-';
 
     colunaNomeHeader.innerText = 'Nome';
     colunaSobrenomeHeader.innerText = 'Sobrenome'
     colunaDataHeader.innerText = 'Data'
 
+    linha.appendChild(colunanum);
     linha.appendChild(colunaNomeHeader);
     linha.appendChild(colunaSobrenomeHeader);
     linha.appendChild(colunaDataHeader);
 
     telatotal.appendChild(tabela);
     tabela.appendChild(linha);
+
+    contagem++;
 
     return tabela;
 }
