@@ -131,7 +131,18 @@
     border-radius: 6px;
 }
 
-.tabela {
+.contagem {
+    width: auto;
+    min-width: 7%;
+    padding: 10px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+table {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -139,7 +150,7 @@
     left: 15px;
 }
 
-.linha {
+tr {
     width: auto;
     height: 30px;
     display: flex;
@@ -149,7 +160,7 @@
     margin-top: 10px;
 }
 
-.dado {
+td {
     width: auto;
     min-width: 29%;
     border: 1px solid black;
@@ -160,11 +171,11 @@
     color: white;
 }
 
-.contagem {
+th {
     width: auto;
-    min-width: 7%;
-    padding: 10px;
+    min-width: 29%;
     border: 1px solid black;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;

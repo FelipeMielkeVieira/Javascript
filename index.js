@@ -62,7 +62,7 @@ function alert(a) {
         sobrenome.value = '';
         data.value = '';
         tela.style.opacity = '1';
-        tabela();
+        montarLinha(montarTabela());
 
     }
 
@@ -70,95 +70,65 @@ function alert(a) {
 
 }
 
-let tabeladiv = document.createElement("table");
-tabeladiv.className = 'tabela';
+let tabelaDiv = document.createElement('div');
 
-let contagem = 0;
-let contagem2 = 0;
-let cont;
-let linha;
+function montarLinha(tabela) {
+    lista.forEach(function (e) {
+        let linhaDado = document.createElement('tr');
 
-function tabela(){
+        let colunaNome = document.createElement('td');
+        let colunaSobrenome = document.createElement('td');
+        let colunaData = document.createElement('td');
 
-    if(contagem2 == 0) {
-        linhainicial();
-    }
+        tabela.appendChild(linhaDado);
 
-    linha = document.createElement("tr");
-    linha.className = 'linha';
+        colunaNome.innerText = e.a;
+        colunaSobrenome.innerText = e.b
 
-    let contagemtexto = document.createElement("td");
-    contagemtexto.className = 'contagem';
-    
-    let dado1 = document.createElement("td");
-    dado1.className = 'dado';
-    
-    let dado2 = document.createElement("td");
-    dado2.className = 'dado';
-    
-    let dado3 = document.createElement("td");
-    dado3.className = 'dado';
+        let data1 = e.c;
+        let data2 = data1.split("-");
+        let dia = data2[2];
+        let mes = data2[1];
+        let ano = data2[0];
 
-    tabeladiv.appendChild(linha);
+        dataf = dia + "/" + mes + "/" + ano;
 
-    let objeto = lista[contagem];
+        colunaData.innerText = dataf;
 
-    contagemtexto.innerText = (contagem + 1);
-    linha.appendChild(contagemtexto);
+        linhaDado.appendChild(colunaNome);
+        linhaDado.appendChild(colunaSobrenome);
+        linhaDado.appendChild(colunaData);
+    });
 
-    dado1.innerText = objeto.a;
-    linha.appendChild(dado1);
-    
-    dado2.innerText = objeto.b;
-    linha.appendChild(dado2);
-
-    let data1 = objeto.c;
-    let data2 = data1.split("-");
-
-    let dia = data2[2];
-    let mes = data2[1];
-    let ano = data2[0];
-
-    dataf = dia + "/" + mes + "/" + ano;
-
-    dado3.innerText = dataf;
-    linha.appendChild(dado3);
-
-    telatotal.appendChild(tabeladiv);
-
-    contagem++;
-    contagem2++;
+    document.querySelector('table').style.textAlign = 'center';
 }
 
-function linhainicial() {
+function montarTabela() {
+    let tabelaAtual = document.querySelector('table');
 
-    linha = document.createElement("tr");
-    linha.className = 'linha';
+    if (tabelaAtual) {
+        tabelaAtual.remove();
+    }
 
-    let contagemtexto = document.createElement("th");
-    contagemtexto.className = 'contagem';
-    
-    let dado1 = document.createElement("th");
-    dado1.className = 'dado';
-    dado1.innerText = 'Nome:'
-    
-    let dado2 = document.createElement("th");
-    dado2.className = 'dado';
-    dado2.innerText = 'Sobrenome:'
-    
-    let dado3 = document.createElement("th");
-    dado3.className = 'dado';
-    dado3.innerText = 'Data de Nascimento:'
+    let tabela = document.createElement('table');
 
-    contagemtexto.innerText = '-'
-    linha.appendChild(contagemtexto);
+    linha = document.createElement('tr');
+    let colunaNomeHeader = document.createElement('th')
+    let colunaSobrenomeHeader = document.createElement('th')
+    let colunaDataHeader = document.createElement('th')
 
-    linha.appendChild(dado1);
-    linha.appendChild(dado2);
-    linha.appendChild(dado3);
+    colunaNomeHeader.innerText = 'Nome';
+    colunaSobrenomeHeader.innerText = 'Sobrenome'
+    colunaDataHeader.innerText = 'Data'
 
-    tabeladiv.appendChild(linha);
+    linha.appendChild(colunaNomeHeader);
+    linha.appendChild(colunaSobrenomeHeader);
+    linha.appendChild(colunaDataHeader);
 
+    telatotal.appendChild(tabela);
+    tabela.appendChild(linha);
+
+    return tabela;
 }
 
 function tirarmensagem() {
@@ -176,11 +146,6 @@ function voltar() {
 let tabelaatual;
 
 function modal() {
-
-    tabelaatual = document.querySelector("table");
-    if(tabelaatual) {
-        telatotal.removeChild(tabeladiv);
-    }
 
     caixa = document.createElement("div");
     caixa.className = 'caixa'
